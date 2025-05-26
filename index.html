@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA - DANIEL JARAMILLO</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Menu', sans-serif;
+        }
+
+        /*Header*/
+
+        header {
+            background-color: #A3A656;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .left-nav,
+        .right-nav {
+            margin-left: 70px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .left-nav a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .right-nav a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .left-nav a:hover,
+        .right-nav a:hover {
+            color: #FFFF00;
+            text-decoration: none;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-right: 40px;
+        }
+
+        .icon {
+            height: 45px;
+            width: auto;
+        }
+
+        .arrow {
+            height: 10px;
+            width: auto;
+        }
+
+        .arrow:hover {
+            cursor: pointer;
+        }
+
+        /*Main*/
+
+        .main {
+            background-image: url('./images/main.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: black;
+            padding: 20px;
+        }
+
+        .textos {
+            line-height: 105px;
+            width: 620px;
+            text-align: left;
+            margin-left: 130px;
+            margin-top: 100px;
+        }
+
+        .main-titulo {
+            font-family: 'Romanesco', regular;
+            font-size: 96px;
+            margin-bottom: 20px;
+            font-weight: lighter;
+        }
+
+        .subtitulo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 35px;
+        }
+
+        .reserva-section {
+            background-color: #F2F6F6;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .reserva,
+        .promocional {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .reserva-section p {
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            font-weight: lighter;
+            font-size: 16px;
+        }
+
+        .reserva input,
+        .promocional input {
+            border: none;
+            border-radius: 10px;
+            background-color: white;
+            padding: 10px 15px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            width: 200px;
+        }
+
+        .promocional input::placeholder {
+            color: #9E9A9A;
+            text-transform: uppercase;
+        }
+
+        /*Opciones masaje*/
+        .card-row {
+            display: flex;
+            justify-content: center;
+            gap: 134px;
+            margin-top: 100px;
+            margin-bottom: 100px;
+        }
+
+        .masaje-card {
+            width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #A3A656;
+            color: white;
+            padding: 15px;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+            justify-items: center;
+        }
+
+        .card-titulo {
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .card-header img {
+            width: 300px;
+            height: auto;
+            object-fit: fill;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+        }
+
+        .card-footer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .btn-reserva {
+            background-color: #A3A656;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 35px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 15px 30px;
+        }
+
+        .btn-reserva:hover {
+            background-color: #384001;
+        }
+
+        /*Planes*/
+        .planes {
+            background-color: #F2F6F6;
+            height: 750px;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .plan-titulo {
+            font-family: 'Inter', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .plan-row {
+            display: flex;
+            justify-content: center;
+            gap: 104px;
+            
+        }
+
+        .plan {
+            width: 350px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .plan-header {
+            padding: 30px 0;
+            width: 100%;
+            justify-items: center;
+        }
+
+        .plan-header img {
+            margin-top: 30px;
+            width: 193px;
+            height: 193px;
+            object-fit: cover;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .plan-img {
+            width: 255px;
+            height: 255px;
+            border: 8px solid #384001;
+            background-color: white;
+            border-radius: 80%;
+            padding: 30px;
+        }
+
+        .plan-nombre {
+            font-family: 'Inter', sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            margin: 20px 0 0;
+        }
+
+        .btn-condiciones {
+            background-color: #A3A656;
+            color: white;
+            padding: 15px 55px;
+            border-radius: 35px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .btn-condiciones:hover {
+            background-color: #384001;
+        }
+
+        .plan-beneficios {
+            width: 70%;
+            height: auto;
+            text-align: left;
+        }
+
+        .plan-beneficios ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .plan-beneficios li {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .plan-beneficios li:before {
+            content: "•";
+            font-size: 14px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        /*Footer*/
+        footer {
+            background-color: #384001;
+            height: 97px;
+            display: flex;
+            color: #A3A656;
+        }
+
+        .left-footer {
+            margin-left: 70px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .right-footer {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-right: 40px;
+        }
+
+        .left-footer a,
+        .right-footer a {
+            color: #A3A656;
+            text-decoration: none;
+        }
+
+        .left-footer a:hover,
+        .right-footer a:hover {
+            color: #FFFF00;
+            text-decoration: none;
+        }
+
+        .right-footer img {
+            height: 35px;
+            width: auto;
+        }
+
+        .right-footer img:hover {
+            cursor: pointer;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Romanesco&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!--Menú header-->
+    <header>
+        <div class="left-nav">
+            <a href="#">PROMOCIONES</a>
+            <a href="#">FOTOS</a>
+            <a href="#">SERVICIOS</a>
+            <a href="#">MAPA</a>
+            <a href="#">CONTACTO</a>
+        </div>
+
+        <div class="right-nav">
+            <div class="user-section">
+                <img src="./images/user.png" alt="Usuario" class="icon">
+                <a href="#">Mi cuenta</a>
+            </div>
+
+            <p>ES</p>
+            <img src="./images/flag.png" alt="Idioma" class="icon">
+
+            <img src="./images/arrow.png" alt="Desplegar" class="arrow">
+        </div>
+    </header>
+
+    <!--Main-->
+    <div class="main">
+        <div class="textos">
+            <h1 class="main-titulo">SPA - Todos</h1>
+            <h2 class="subtitulo">Regálate un momento de paz y consiente a tu piel en el mejor lugar</h2>
+        </div>
+
+    </div>
+
+    <!--Reservar cita-->
+    <div class="reserva-section">
+        <div class="reserva">
+            <p>RESERVA TU CITA:</p>
+            <input type="text">
+        </div>
+        <div class="promocional">
+            <p>CÓDIGO PROMOCIONAL:</p>
+            <input type="text" placeholder="CODIGO">
+        </div>
+    </div>
+
+    <!--Opciones masaje-->
+    <div class="card-row">
+        <div class="masaje-card">
+            <div class="card-header">
+                <p class="card-titulo">Masaje de pies</p>
+            </div>
+
+            <img src="./images/pies.png" alt="Pies">
+            <p>Esta es una descripción de la opción en cuestión...</p>
+            <div class="card-footer">
+                <p>$65</p>
+                <div class="btn-reserva">RESERVAR</div>
+            </div>
+        </div>
+
+        <div class="masaje-card">
+            <div class="card-header">
+                <p class="card-titulo">Masaje relajante</p>
+            </div>
+
+            <img src="./images/relajante.png" alt="Relajante">
+            <p>Esta es una descripción de la opción en cuestión...</p>
+            <div class="card-footer">
+                <p>$60</p>
+                <div class="btn-reserva">RESERVAR</div>
+            </div>
+        </div>
+
+        <div class="masaje-card">
+            <div class="card-header">
+                <p class="card-titulo">Masaje con bambú</p>
+            </div>
+
+            <img src="./images/bambu.png" alt="Bambu">
+            <p>Esta es una descripción de la opción en cuestión...</p>
+            <div class="card-footer">
+                <p>$58</p>
+                <div class="btn-reserva">RESERVAR</div>
+            </div>
+        </div>
+
+
+    </div>
+    <!--Planes-->
+
+    <div class="planes">
+        <p class="plan-titulo">Haste socio y prueba nuestros beneficios</p>
+        <div class="plan-row">
+            <div class="plan">
+                <div class="plan-header">
+                    <div class="plan-img">
+                        <img src="./images/gold.png" alt="Gold">
+                    </div>
+                    <p class="plan-nombre">GOLD</p>
+                </div>
+                <div class="btn-condiciones">
+                    VER CONDICIONES
+                </div>
+                <div class="plan-beneficios">
+                    <ul>
+                        <li>Gimnasio</li>
+                        <li>Piscina</li>
+                        <li>Todos los tratamientos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="plan">
+                <div class="plan-header">
+                    <div class="plan-img">
+                        <img src="./images/premium.png" alt="Premium">
+                    </div>
+                    <p class="plan-nombre">PREMIUM</p>
+                </div>
+                <div class="btn-condiciones">
+                    VER CONDICIONES
+                </div>
+                <div class="plan-beneficios">
+                    <ul>
+                        <li>Gimnasio</li>
+                        <li>Todos los tratamientos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="plan">
+                <div class="plan-header">
+                    <div class="plan-img">
+                        <img src="./images/plate.png" alt="Plate">
+                    </div>
+                    <p class="plan-nombre">PLATE</p>
+                </div>
+                <div class="btn-condiciones">
+                    VER CONDICIONES
+                </div>
+                <div class="plan-beneficios">
+                    <ul>
+                        <li>Tratamientos faciales</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer>
+        <div class="left-footer">
+            <a href="#">POLITICAS DE COOKIES</a>
+            <a href="#">AVISO LEGAL</a>
+            <a href="#">PROTECCIÓN DE DATOS</a>
+            <a href="#">MAPA DEL SITIO</a>
+        </div>
+
+        <div class="right-footer">
+            <a href="#">SIGUENOS EN</a>
+            <img src="./images/rs_facebook.png" alt="Facebook">
+            <img src="./images/rs_twiter.png" alt="Twitter">
+            <img src="./images/rs_youtube.png" alt="Youtube">
+
+        </div>
+
+    </footer>
+</body>
+
+</html>
